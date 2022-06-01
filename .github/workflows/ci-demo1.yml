@@ -1,0 +1,24 @@
+name: ci-demo1
+on:
+  push:
+    branches:
+      - main
+env:
+  REPOSITORY: testers
+  DOCKERFILE_PATH: Dockerfile
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v3
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.AZURE_CONTAINER_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Build and push an image to container registry
+        run: |
+          docker build -f ${{ env.DOCKERFILE_PATH }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }} .
+          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
