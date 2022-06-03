@@ -28,7 +28,6 @@ jobs:
 
       - name: copy build files
         run: |
-          rm -r *
           docker cp demo1:/app/publish/ ./
           docker rm demo1
 
