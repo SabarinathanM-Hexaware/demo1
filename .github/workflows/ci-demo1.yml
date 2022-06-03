@@ -4,8 +4,9 @@ on:
     branches:
       - main
 env:
-  REPOSITORY: testers
-  DOCKERFILE_PATH: Dockerfile
+  REPOSITORY: demo1
+  DOCKER_BUILD_FILE_PATH: Dockerfile.build
+  DOCKER_FILE_PATH: Dockerfile.publish
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -18,7 +19,16 @@ jobs:
           login-server: ${{ secrets.AZURE_CONTAINER_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-      - name: Build and push an image to container registry
+      - name: Build and Test
+        run: docker build -f ${{ env.DOCKER_BUILD_FILE_PATH }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }} .
+
+      - name: Runs docker
+        run: docker run --name demo1 -d ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }} .
+
+      - name: copy build files
         run: |
-          docker build -f ${{ env.DOCKERFILE_PATH }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }} .
-          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
+          docker cp demo1:/app/publish ./
+          docker rm demo1
+
+      - name: Check files
+        run: ls -al
