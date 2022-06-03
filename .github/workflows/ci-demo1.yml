@@ -7,6 +7,7 @@ env:
   REPOSITORY: demo1
   DOCKER_BUILD_FILE_PATH: Dockerfile.build
   DOCKER_FILE_PATH: Dockerfile.publish
+  DOCKER_BUILD_CONTEXT: ./publish
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -33,3 +34,6 @@ jobs:
 
       - name: Check files
         run: ls -al
+
+      - name: Build and  push image to container registry
+        run: docker build -f ${{ env.DOCKER_FILE_PATH }} ${{ env.DOCKER_BUILD_CONTEXT }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
