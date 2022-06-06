@@ -31,6 +31,13 @@ jobs:
           docker cp demo1:/app/publish/ ./
           docker cp demo1:/testresults/ ./
           docker rm demo1
+
+      - name: Check files
+        run: |
+          ls -al
+          cd testresults
+          ls -al
+          cd ..
         
       - name: copy coverage report
         run: |
@@ -42,13 +49,6 @@ jobs:
         with:
           name: test-results
           path: "**/*.trx"
-
-      - name: Check files
-        run: |
-          ls -al
-          cd testresults
-          ls -al
-          cd ..
 
       - name: publish coverage report
         uses: irongut/CodeCoverageSummary@v1.2.0
