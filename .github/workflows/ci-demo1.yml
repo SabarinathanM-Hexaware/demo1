@@ -38,6 +38,11 @@ jobs:
           name: test-results
           path: "**/*.trx"
 
+      - name: publish coverage report
+        uses: irongut/CodeCoverageSummary@v1.2.0
+        with:
+          filename: "**/testresults/**/*.json"
+
       - name: Check files
         run: |
           ls -al
