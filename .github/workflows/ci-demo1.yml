@@ -45,12 +45,13 @@ jobs:
           ls -al
           cd coverage
           ls -al
-          cd ..\..
+          cd ..
+          cd ..
 
       - name: publish coverage report
         uses: irongut/CodeCoverageSummary@v1.2.0
         with:
-          filename: "**/testresults/coverage/coverage.cobertura.xml"
+          filename: "/testresults/coverage/coverage.cobertura.xml"
 
       
 
