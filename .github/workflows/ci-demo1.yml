@@ -39,7 +39,11 @@ jobs:
           path: /testresults/*.trx
 
       - name: Check files
-        run: ls -al
+        run: |
+          ls -al
+          cd testresults
+          ls -al
+          cd ..
 
       - name: Build and  push image to container registry
         run: |
