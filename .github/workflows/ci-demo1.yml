@@ -48,7 +48,9 @@ jobs:
           ls -al
           cd testresults
           ls -al
-          cd ..
+          cd coverage
+          ls -al
+          cd ..\..
 
       - name: Build and  push image to container registry
         run: |
