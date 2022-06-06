@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v2  # upload test results
         with:
           name: test-results
-          path: /testresults/*.trx
+          path: /testresults/testresultsApi.trx
 
       - name: Check files
         run: |
