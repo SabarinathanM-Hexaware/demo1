@@ -21,5 +21,3 @@ RUN dotnet publish "Demo1.Api.csproj" -c Release -o /app/publish
 WORKDIR /src
 RUN dotnet restore "Code/Demo1.Api/Demo1.Api.csproj"
 RUN dotnet test --results-directory /testresults --logger "trx;LogFileName=testresults.Api.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/testresults/coverage/ /p:MergeWith=/testresults/coverage/coverage.json "Code/Demo1.Test.Api/Demo1.Test.Api.csproj"
-
-ENTRYPOINT dotnet /app/publish/Demo1.Api.dll
