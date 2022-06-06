@@ -9,6 +9,7 @@ COPY ["Code/Demo1.Entities/Demo1.Entities.csproj", "Code/Demo1.Entities/"]
 COPY ["Code/Demo1.Common/Demo1.Common.csproj", "Code/Demo1.Common/"]
 COPY ["Code/Demo1.Business/Demo1.Business.csproj", "Code/Demo1.Business/"]
 COPY ["Code/Demo1.Data/Demo1.Data.csproj", "Code/Demo1.Data/"]
+COPY ["Code/Demo1.Test.Api/Demo1.Test.Api.csproj", "Code/Demo1.Test.Api/"]
 RUN dotnet restore "Code/Demo1.Api/Demo1.Api.csproj"
 COPY . .
 WORKDIR "/src/Code/Demo1.Api"
@@ -16,3 +17,8 @@ RUN dotnet build "Demo1.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Demo1.Api.csproj" -c Release -o /app/publish
+
+WORKDIR /src
+RUN dotnet test --results-directory /testresults --logger "trx;LogFileName=testresults.Api.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=/testresults/coverage/ /p:MergeWith=/testresults/coverage/coverage.json "Code/Demo1.Test.Api/Demo1.Test.Api.csproj"
+
+ENTRYPOINT dotnet /app/publish/Demo1.Api.dll
