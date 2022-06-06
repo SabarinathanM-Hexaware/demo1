@@ -35,13 +35,13 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: "/src/testresults/testresultsApi.trx"
+          files: "**/*.trx"
 
       - name: publish test results 1
         uses: actions/upload-artifact@v2  # upload test results
         with:
           name: test-results
-          path: "/src/testresults/testresultsApi.trx"
+          path: "**/*.trx"
 
       - name: Check files
         run: |
