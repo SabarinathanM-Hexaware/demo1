@@ -48,7 +48,7 @@ jobs:
       - name: publish coverage report
         uses: irongut/CodeCoverageSummary@v1.2.0
         with:
-          filename: "coverage.cobertura.xml"
+          filename: "**/coverage.*.xml"
 
       
 
