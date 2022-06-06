@@ -32,11 +32,16 @@ jobs:
           docker cp demo1:/testresults/ ./
           docker rm demo1
 
-      - name: publish test results
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: "/testresults/testresultsApi.trx"
+
+      - name: publish test results 1
         uses: actions/upload-artifact@v2  # upload test results
         with:
           name: test-results
-          path: /testresults/testresultsApi.trx
+          path: "/testresults/testresultsApi.trx"
 
       - name: Check files
         run: |
