@@ -35,7 +35,7 @@ jobs:
       - name: copy coverage report
         run: |
           ls -al
-          cp /testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
+          cp testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
 
       - name: publish test results 1
         uses: actions/upload-artifact@v2  # upload test results
