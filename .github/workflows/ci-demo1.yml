@@ -38,11 +38,6 @@ jobs:
           name: test-results
           path: "**/*.trx"
 
-      - name: publish coverage report
-        uses: irongut/CodeCoverageSummary@v1.2.0
-        with:
-          filename: "**/testresults/coverage/coverage.cobertura.xml"
-
       - name: Check files
         run: |
           ls -al
@@ -51,6 +46,13 @@ jobs:
           cd coverage
           ls -al
           cd ..\..
+
+      - name: publish coverage report
+        uses: irongut/CodeCoverageSummary@v1.2.0
+        with:
+          filename: "**/testresults/coverage/coverage.cobertura.xml"
+
+      
 
       - name: Build and  push image to container registry
         run: |
