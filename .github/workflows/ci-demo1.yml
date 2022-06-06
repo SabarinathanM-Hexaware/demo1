@@ -33,7 +33,9 @@ jobs:
           docker rm demo1
         
       - name: copy coverage report
-        run: cp ./testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
+        run: |
+          ls -al
+          cp /testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
 
       - name: publish test results 1
         uses: actions/upload-artifact@v2  # upload test results
@@ -51,7 +53,7 @@ jobs:
       - name: publish coverage report
         uses: irongut/CodeCoverageSummary@v1.2.0
         with:
-          filename: "./testresults/coverage/coverage.cobertura.xml"
+          filename: "**/coverage.*.xml"
 
       
 
