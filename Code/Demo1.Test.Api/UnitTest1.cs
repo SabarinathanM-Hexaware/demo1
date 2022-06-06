@@ -1,15 +1,19 @@
-namespace Demo1.Tests.Api;
+using NUnit.Framework;
 
-public class Tests
+namespace Demo1.Tests.Api
 {
-    [SetUp]
-    public void Setup()
+    [TestFixture]
+    public class Tests
     {
-    }
+        [SetUp]
+        public void Setup()
+        {
+        }
 
-    [Test]
-    public void Test1()
-    {
-        Assert.Pass();
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
+        }
     }
 }
