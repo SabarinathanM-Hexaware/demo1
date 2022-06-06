@@ -29,7 +29,14 @@ jobs:
       - name: copy build files
         run: |
           docker cp demo1:/app/publish/ ./
+          docker cp demo1:/testresults/ ./
           docker rm demo1
+
+      - name: publish test results
+        uses: actions/upload-artifact@v2  # upload test results
+        with:
+          name: test-results
+          path: /testresults/*.xml
 
       - name: Check files
         run: ls -al
