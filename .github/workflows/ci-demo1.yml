@@ -31,6 +31,7 @@ jobs:
           docker cp demo1:/app/publish/ ./
           docker cp demo1:/testresults/ ./
           docker rm demo1
+          cp /testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
 
       - name: publish test results 1
         uses: actions/upload-artifact@v2  # upload test results
