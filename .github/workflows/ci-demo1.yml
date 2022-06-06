@@ -60,4 +60,4 @@ jobs:
       - name: Build and  push image to container registry
         run: |
           docker build -f ${{ env.DOCKER_FILE_PATH }} ${{ env.DOCKER_BUILD_CONTEXT }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
-          # docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
+          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
