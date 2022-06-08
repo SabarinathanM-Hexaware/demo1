@@ -45,7 +45,7 @@ jobs:
           cp testresults/coverage/coverage.cobertura.xml coverage.cobertura.xml
 
       - name: publish test results 1
-        uses: actions/upload-artifact@v2  # upload test results
+        uses: dorny/test-reporter@v1
         with:
           name: test-results
           path: "**/*.trx"
