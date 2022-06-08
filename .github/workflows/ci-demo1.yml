@@ -4,9 +4,7 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
-      - development
+
 env:
   REPOSITORY: demo1
   DOCKER_BUILD_FILE_PATH: Dockerfile.build
@@ -35,13 +33,6 @@ jobs:
           docker cp demo1:/app/publish/ ./
           docker cp demo1:/testresults/ ./
           docker rm demo1
-
-      - name: Check files
-        run: |
-          ls -al
-          cd testresults
-          ls -al
-          cd ..
         
       - name: copy coverage report
         run: |
@@ -70,9 +61,8 @@ jobs:
           recreate: true
           path: code-coverage-results.md
 
-      
-
       - name: Build and  push image to container registry
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: |
           docker build -f ${{ env.DOCKER_FILE_PATH }} ${{ env.DOCKER_BUILD_CONTEXT }} -t ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
-          # docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
+          docker push ${{ secrets.AZURE_CONTAINER_REGISTRY }}/${{ env.REPOSITORY}}:${GITHUB_REF##*/}-${{ github.run_number }}
