@@ -48,6 +48,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: test-results
+          reporter: dotnet-trx
           path: "**/*.trx"
 
       - name: publish coverage report
