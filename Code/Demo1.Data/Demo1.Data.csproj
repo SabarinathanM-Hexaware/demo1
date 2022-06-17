@@ -5,6 +5,10 @@
     <ProjectReference Include="..\Demo1.Entities\Demo1.Entities.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+	    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.11.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
