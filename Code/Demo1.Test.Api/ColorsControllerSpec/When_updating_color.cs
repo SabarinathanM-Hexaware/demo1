@@ -11,7 +11,7 @@ namespace Demo1.Test.Api.ColorsControllerSpec
 {
     public class When_updating_color : UsingColorsControllerSpec
     {
-        private ActionResult<bool> _result;
+        private ActionResult<Colors> _result;
         private Colors _color;
 
         public override void Context()
