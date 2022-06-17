@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Demo1.Api.Middleware;
 
 namespace Demo1.Api
 {
@@ -57,11 +56,7 @@ namespace Demo1.Api
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseElmah();
-
-            app.UseUserContextMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
