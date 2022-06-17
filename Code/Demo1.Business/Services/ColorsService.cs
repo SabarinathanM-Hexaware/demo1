@@ -1,9 +1,7 @@
 using Demo1.Business.Interfaces;
 using Demo1.Data.Interfaces;
 using Demo1.Entities.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Demo1.Business.Services
 {
@@ -19,25 +17,20 @@ namespace Demo1.Business.Services
         {
             return _ColorsRepository.GetAll();
         }
-        
-        public Colors GetById(string id)
+
+        public bool Save(Colors Colors)
         {
-            return _ColorsRepository.GetById(id);
+             return _ColorsRepository.Save(Colors);
         }
 
-        public void Save(Colors Colors)
+        public Colors Update(string id, Colors Colors)
         {
-             _ColorsRepository.Save(Colors);
+            return _ColorsRepository.Update(id, Colors);
         }
 
-        public void Update(string id, Colors Colors)
+        public bool Delete(string id)
         {
-            _ColorsRepository.Update(id, Colors);
-        }
-
-        public void Delete(string id)
-        {
-            _ColorsRepository.Delete(id);
+            return _ColorsRepository.Delete(id);
         }
 
     }

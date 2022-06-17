@@ -1,14 +1,10 @@
-using System;
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using ElmahCore.Mvc;
-using Microsoft.AspNetCore.Builder;
 using ElmahCore;
 using Demo1.Api.Filters;
 using Demo1.Business.Installer;
-using Demo1.Entities.Entities;
 
 namespace Demo1.Api.Installer
 {
@@ -40,8 +36,6 @@ namespace Demo1.Api.Installer
             {
                 options.LogPath = "./log";
             });
-
-            _service.AddSingleton<UserContext>(new UserContext());
 
             var serviceInstaller = new ServiceInstaller(_service);
             serviceInstaller.Install();
