@@ -15,7 +15,11 @@ namespace Demo1.Api
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try{
+                CreateHostBuilder(args).Build().Run();
+            } finally {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -25,12 +29,12 @@ namespace Demo1.Api
                     webBuilder.UseStartup<Startup>().ConfigureKestrel(options =>
                     {
                         options.AllowSynchronousIO = true;
-                    }); ;
+                    });
                 })
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    //logging.SetMinimumLevel(LogLevel.Information);
                 })
                 .UseNLog();
     }
