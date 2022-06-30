@@ -10,7 +10,7 @@ namespace Demo1.Test.Business.ColorsServiceSpec
 {
     public class When_saving_color : UsingColorsServiceSpec
     {
-        private bool _result;
+        private Colors _result;
 
         private Colors _color;
 
@@ -42,9 +42,9 @@ namespace Demo1.Test.Business.ColorsServiceSpec
         [Test]
         public void Appropriate_result_is_returned()
         {
-            _result.ShouldBeOfType<bool>();
+            _result.ShouldBeOfType<Colors>();
 
-            _result.ShouldBe(true);
+            _result.ShouldBe(_color);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Demo1.Business.Interfaces
     public interface IColorsService
     {      
         IEnumerable<Colors> GetAll();
-        bool Save(Colors classification);
+        Colors Save(Colors classification);
         Colors Update(string id, Colors classification);
         bool Delete(string id);
 

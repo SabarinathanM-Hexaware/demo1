@@ -1,0 +1,120 @@
+﻿<error errorId="4c3b0768-9d19-44b9-9899-4faea0495a8a" application="Demo1.Api" host="LTCH-5CD1184F20" type="System.TimeoutException" message="A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = MongoDB.Driver.MongoClient+AreSessionsSupportedServerSelector, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : &quot;1&quot;, ConnectionMode : &quot;Automatic&quot;, Type : &quot;Unknown&quot;, State : &quot;Disconnected&quot;, Servers : [] }." source="MongoDB.Driver.Core" detail="# caller: @C:\Sources\ElmahCore\ElmahCore\Internal$\CallerInfo.cs:10&#xD;&#xA;System.TimeoutException: A timeout occured after 30000ms selecting a server using CompositeServerSelector{ Selectors = MongoDB.Driver.MongoClient+AreSessionsSupportedServerSelector, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 } }. Client view of cluster state is { ClusterId : &quot;1&quot;, ConnectionMode : &quot;Automatic&quot;, Type : &quot;Unknown&quot;, State : &quot;Disconnected&quot;, Servers : [] }.&#xD;&#xA;   at MongoDB.Driver.Core.Clusters.Cluster.ThrowTimeoutException(IServerSelector selector, ClusterDescription description)&#xD;&#xA;   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChangedHelper.HandleCompletedTask(Task completedTask)&#xD;&#xA;   at MongoDB.Driver.Core.Clusters.Cluster.WaitForDescriptionChanged(IServerSelector selector, ClusterDescription description, Task descriptionChangedTask, TimeSpan timeout, CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.Core.Clusters.Cluster.SelectServer(IServerSelector selector, CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.MongoClient.AreSessionsSupportedAfterServerSelection(CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.MongoClient.AreSessionsSupported(CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.MongoClient.StartImplicitSession(CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.OperationExecutor.StartImplicitSession(CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSession[TResult](Func`2 func, CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.MongoCollectionImpl`1.FindSync[TProjection](FilterDefinition`1 filter, FindOptions`2 options, CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.FindFluent`2.ToCursor(CancellationToken cancellationToken)&#xD;&#xA;   at MongoDB.Driver.IAsyncCursorSourceExtensions.ToList[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)&#xD;&#xA;   at Demo1.Data.Repositories.ColorsRepository.GetAll() in D:\demo1\Code\Demo1.Data\Repositories\ColorsRepository.cs:line 20&#xD;&#xA;   at Demo1.Business.Services.ColorsService.GetAll() in D:\demo1\Code\Demo1.Business\Services\ColorsService.cs:line 18&#xD;&#xA;   at Demo1.Api.Controllers.ColorsController.Get() in D:\demo1\Code\Demo1.Api\Controllers\ColorsController.cs:line 22&#xD;&#xA;   at lambda_method(Closure , Object , Object[] )&#xD;&#xA;   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeNextExceptionFilterAsync&gt;g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ExceptionContextSealed context)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()&#xD;&#xA;--- End of stack trace from previous location where exception was thrown ---&#xD;&#xA;   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Logged|17_1(ResourceInvoker invoker)&#xD;&#xA;   at Microsoft.AspNetCore.Routing.EndpointMiddleware.&lt;Invoke&gt;g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)&#xD;&#xA;   at Demo1.Api.Middleware.RequestResponseLoggingMiddleware.LogResponse(HttpContext context) in D:\demo1\Code\Demo1.Api\Middleware\RequestResponseLoggingMiddleware.cs:line 59&#xD;&#xA;   at Demo1.Api.Middleware.RequestResponseLoggingMiddleware.LogResponse(HttpContext context) in D:\demo1\Code\Demo1.Api\Middleware\RequestResponseLoggingMiddleware.cs:line 69&#xD;&#xA;   at Demo1.Api.Middleware.RequestResponseLoggingMiddleware.InvokeAsync(HttpContext context) in D:\demo1\Code\Demo1.Api\Middleware\RequestResponseLoggingMiddleware.cs:line 33&#xD;&#xA;   at ElmahCore.Mvc.ErrorLogMiddleware.Invoke(HttpContext context, Func`1 next)" time="2022-06-27T10:42:21.5723040Z">
+  <serverVariables>
+    <item name="HttpVersion">
+      <value string="2.0" />
+    </item>
+    <item name="Scheme">
+      <value string="https" />
+    </item>
+    <item name="Method">
+      <value string="GET" />
+    </item>
+    <item name="PathBase">
+      <value string="" />
+    </item>
+    <item name="Path">
+      <value string="/api/Colors" />
+    </item>
+    <item name="QueryString">
+      <value string="" />
+    </item>
+    <item name="RawTarget">
+      <value string="/api/Colors" />
+    </item>
+    <item name="HasResponseStarted">
+      <value string="False" />
+    </item>
+    <item name="RemoteIpAddress" />
+    <item name="RemotePort">
+      <value string="0" />
+    </item>
+    <item name="LocalIpAddress" />
+    <item name="LocalPort">
+      <value string="0" />
+    </item>
+    <item name="RequestConnectionId" />
+    <item name="TraceIdentifier" />
+    <item name="ResponseBody">
+      <value string="Microsoft.AspNetCore.Server.IIS.Core.HttpResponseStream" />
+    </item>
+    <item name="ResponsePipeWrapper" />
+    <item name="Header_Accept">
+      <value string="text/plain" />
+    </item>
+    <item name="Header_Accept-Encoding">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="Header_Accept-Language">
+      <value string="en-GB,en-US;q=0.9,en;q=0.8,ta;q=0.7" />
+    </item>
+    <item name="Header_Connection">
+      <value string="close" />
+    </item>
+    <item name="Header_Cookie">
+      <value string="_ga=GA1.1.224288776.1655190586" />
+    </item>
+    <item name="Header_Host">
+      <value string="localhost:44367" />
+    </item>
+    <item name="Header_Referer">
+      <value string="https://localhost:44367/swagger/index.html" />
+    </item>
+    <item name="Header_User-Agent">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" />
+    </item>
+    <item name="Header_sec-ch-ua">
+      <value string="&quot; Not A;Brand&quot;;v=&quot;99&quot;, &quot;Chromium&quot;;v=&quot;102&quot;, &quot;Google Chrome&quot;;v=&quot;102&quot;" />
+    </item>
+    <item name="Header_dnt">
+      <value string="1" />
+    </item>
+    <item name="Header_sec-ch-ua-mobile">
+      <value string="?0" />
+    </item>
+    <item name="Header_sec-ch-ua-platform">
+      <value string="&quot;Windows&quot;" />
+    </item>
+    <item name="Header_sec-fetch-site">
+      <value string="same-origin" />
+    </item>
+    <item name="Header_sec-fetch-mode">
+      <value string="cors" />
+    </item>
+    <item name="Header_sec-fetch-dest">
+      <value string="empty" />
+    </item>
+    <item name="MaxRequestBodySize">
+      <value string="30000000" />
+    </item>
+    <item name="StatusCode">
+      <value string="200" />
+    </item>
+    <item name="ReasonPhrase" />
+    <item name="User_ClaimsPrincipalSelector" />
+    <item name="User_Current" />
+    <item name="Connection_Id">
+      <value string="18158513720643289101" />
+    </item>
+    <item name="Connection_RemoteIpAddress">
+      <value string="::1" />
+    </item>
+    <item name="Connection_RemotePort">
+      <value string="62355" />
+    </item>
+    <item name="Connection_LocalIpAddress">
+      <value string="::1" />
+    </item>
+    <item name="Connection_LocalPort">
+      <value string="44367" />
+    </item>
+    <item name="Connection_ClientCertificate" />
+    <item name="HttpStatusCode">
+      <value string="0" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="_ga">
+      <value string="GA1.1.224288776.1655190586" />
+    </item>
+  </cookies>
+</error>

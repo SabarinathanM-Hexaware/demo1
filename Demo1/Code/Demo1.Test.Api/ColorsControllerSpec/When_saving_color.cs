@@ -11,7 +11,7 @@ namespace Demo1.Test.Api.ColorsControllerSpec
 {
     public class When_saving_color : UsingColorsControllerSpec
     {
-        private ActionResult<bool> _result;
+        private ActionResult<Colors> _result;
 
         private Colors _color;
 
@@ -26,7 +26,7 @@ namespace Demo1.Test.Api.ColorsControllerSpec
                 Desc = "Any"
             };
 
-            _colorsService.Save(_color).Returns(true);
+            _colorsService.Save(_color).Returns(_color);
         }
         public override void Because()
         {
@@ -47,11 +47,11 @@ namespace Demo1.Test.Api.ColorsControllerSpec
 
             var resultListObject = (_result.Result as OkObjectResult).Value;
 
-            resultListObject.ShouldBeOfType<bool>();
+            resultListObject.ShouldBeOfType<Colors>();
 
-            var resultList = (bool)resultListObject;
+            var resultList = (Colors)resultListObject;
 
-            resultList.ShouldBe(true);
+            resultList.ShouldBe(_color);
         }
     }
 }

@@ -22,19 +22,19 @@ namespace Demo1.Api.Controllers
             return Ok(_ColorsService.GetAll());
         }
 
-        [HttpPost("Save")]
-        public ActionResult<bool> Save(Colors Colors)
+        [HttpPost]
+        public ActionResult<Colors> Save(Colors Colors)
         {
             return Ok(_ColorsService.Save(Colors));
         }
 
-        [HttpPut("Update/{id}")]
+        [HttpPut("{id}")]
         public ActionResult<Colors> Update([FromRoute] string id, Colors Colors)
         {
             return Ok(_ColorsService.Update(id, Colors));
         }
 
-        [HttpDelete("Delete/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult<bool> Delete([FromRoute] string id)
         {
             return Ok(_ColorsService.Delete(id));

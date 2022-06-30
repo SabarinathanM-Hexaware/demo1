@@ -18,9 +18,10 @@ namespace Demo1.Business.Services
             return _ColorsRepository.GetAll();
         }
 
-        public bool Save(Colors Colors)
+        public Colors Save(Colors Colors)
         {
-             return _ColorsRepository.Save(Colors);
+            _ColorsRepository.Save(Colors);
+            return Colors;
         }
 
         public Colors Update(string id, Colors Colors)
