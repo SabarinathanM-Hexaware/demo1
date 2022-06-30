@@ -7,8 +7,8 @@ on:
 
 env:
   REPOSITORY: demo1
-  DOCKER_BUILD_FILE_PATH: ./Dockerfile.build
-  DOCKER_FILE_PATH: ./Dockerfile.publish
+  DOCKER_BUILD_FILE_PATH: ./Demo1/Dockerfile.build
+  DOCKER_FILE_PATH: ./Demo1/Dockerfile.publish
   DOCKER_BUILD_CONTEXT: ./Demo1
   DOCKER_PUBLISH_CONTEXT: ./publish
   CONTAINER_NAME: Demo1
