@@ -40,7 +40,18 @@ namespace Demo1.Api.Filters
                     };
                 }
                 context.ExceptionHandled = true;
+            } else
+            {
+                var other_exception = context.Exception;
+                context.Result = new ObjectResult(other_exception.Message)
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError,
+                };
+                context.ExceptionHandled = true;
             }
+            _logger.LogError($"Error: " +
+                            $"Message:{context.Exception.Message} " +
+                            $"StackTrace: {context.Exception.StackTrace} ");
         }
     }
 }
