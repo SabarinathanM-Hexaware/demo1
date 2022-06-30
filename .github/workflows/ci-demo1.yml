@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - main
-  pull_request:
-  paths:
+    paths:
     - "**/Demo1/**"
+  pull_request:
 
 env:
   REPOSITORY: demo1
